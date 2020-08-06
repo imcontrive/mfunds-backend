@@ -9,6 +9,13 @@ var jwt = require("jsonwebtoken");
 
 // Routes for user registration
 
+router.get("/", (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) res.status(404).json({ error: err });
+    res.status(200).json({ message: "Users from db", users });
+  });
+});
+
 router.post("/signup", (req, res) => {
   User.create(req.body, (err, user) => {
     // console.log("request.body", req.body);

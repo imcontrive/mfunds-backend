@@ -4,12 +4,12 @@ const bodyParser = require("body-parser");
 const usersRoutes = require("./api/routes/users");
 
 const app = express();
+require("dotenv").config();
 
 app.use(cors());
-require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/users", usersRoutes);
+app.use("/", usersRoutes);
 
 module.exports = app;
